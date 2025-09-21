@@ -1,4 +1,3 @@
-Codigo adjunto del ejercicio 1 el cual declaraba que: Crear una función que realice operaciones básicas (suma, resta, multiplicación, división) entre dos números, según la elección del usuario, la forma de entrada de la función será los dos operandos y el caracter usado para la operación. entrada: (1,2,"+"), salida (3).
 # punto1_operaciones.py
 def calcular(a, b, op):
     if op == '+':
