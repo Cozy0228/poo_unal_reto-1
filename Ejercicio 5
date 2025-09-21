@@ -1,0 +1,36 @@
+def filtrar_anagramas(palabras: list) -> list:#revuelve  ala lista las palbras que tengan las mismas letras 
+    grupos = {}#diccionario, clave 
+    for palabra in palabras:
+        clave = "".join(sorted(palabra.lower()))  # conviertea minusculas y ordena las letras en una lista
+        if clave not in grupos:
+            grupos[clave] = []
+        grupos[clave].append(palabra)#agrupa las palabras
+
+    # Tomamos solo los grupos que tienen más de una palabra (o sea, anagramas)
+    resultado = []
+    for lista in grupos.values():#se añaden a lista resultados 
+        if len(lista) > 1:
+            resultado.extend(lista)
+    return resultado
+
+def procesar_entrada(entrada: str) -> list:
+    # Reemplazar comas por espacios y separar
+    partes = entrada.replace(",", " ").split()
+    return [p.strip() for p in partes if p.strip()]
+
+while True:
+    entrada = input("Ingrese palabras separadas por espacios o comas (o 'salir' para terminar): ")
+    if entrada.strip().lower() == "salir":
+        print("Programa finalizado ")
+        break
+
+    palabras = procesar_entrada(entrada)
+    if not palabras:
+        print(" Debe ingresar al menos una palabra\n")
+        continue
+
+    resultado = filtrar_anagramas(palabras)
+    if resultado:
+        print("Palabras con los mismos caracteres:", resultado, "\n")
+    else:
+        print("No se encontraron palabras con los mismos caracteres\n")
