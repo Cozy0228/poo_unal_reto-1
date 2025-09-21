@@ -1,0 +1,21 @@
+def palindromo(s: str) -> bool: #s es una cadena que devuelve true y false 
+    s = s.lower().replace(" ", "")  # ignora mayusculas y espacios y replace pasa todo a minusculas
+    i, j = 0, len(s) - 1 #i apunta al principio de la cadena y j al final 
+    while i < j:#bucle que avanza desde los extremos hacia el centro  
+        if s[i] != s[j]:#compara el las letras en i con j 
+            return False
+        i += 1 #compara las letras en i y en j para comparar 
+        j -= 1
+    return True
+
+
+
+while True:#bucle de palabras 
+    palabra = input("Ingrese una palabra o (salir) para terminar: ")
+    if palabra.lower() == "salir": #si escribe salir se rompe el bucle 
+        print("Programa finalizado ")
+        break
+    if palindromo(palabra):
+        print("Es un palíndromo \n")
+    else:
+        print("No es un palíndromo \n")
