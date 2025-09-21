@@ -1,0 +1,29 @@
+def mayor_suma_consecutivos(numeros: list) -> int:#define la funcion que recibe una lista de enteros 
+    if len(numeros) < 2:#si la lsita tiene menos de 2 numeros no hay pares
+        return None
+    return max(a + b for a, b in zip(numeros, numeros[1:]))#crea una lista , empareja elementos consecutivo, zip produce (x0,x1)(x1,x2)
+#calcula cada suma sobre la marcha, sin crear listas, max toma la mayor de las usmas y la devuelve 
+def procesar_entrada(entrada: str) -> list:
+    partes = entrada.replace(",", " ").split()
+    numeros = []
+    for x in partes:
+        try:
+            numeros.append(int(x))
+        except ValueError:#evitamos evaluar error si entra un iterador vacio  
+            pass
+    return numeros
+
+# Bucle principal
+while True:
+    entrada = input("Ingrese números separados por espacio o coma (o 'salir' para terminar): ")
+    if entrada.strip().lower() == "salir":
+        print("Programa finalizado ")
+        break
+
+    numeros = procesar_entrada(entrada)
+    if len(numeros) < 2:
+        print(" Debe ingresar al menos dos números\n")
+        continue
+
+    resultado = mayor_suma_consecutivos(numeros)
+    print("La mayor suma entre consecutivos es:", resultado, "\n")
